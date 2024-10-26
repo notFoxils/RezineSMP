@@ -41,6 +41,14 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <outputDirectory>../../Servers/RezineSMP/plugins</outputDirectory>
+                </configuration>
+            </plugin>
         </plugins>
         <resources>
             <resource>
@@ -71,12 +79,14 @@
         <dependency>
             <groupId>me.foxils</groupId>
             <artifactId>foxutils-items</artifactId>
-            <version>1.17.3-SNAPSHOT</version>
+            <version>1.17.4-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>me.foxils</groupId>
             <artifactId>foxutils-hud</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

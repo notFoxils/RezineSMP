@@ -4,3 +4,7 @@ main: me.foxils.rezineSMP.RezineSMP
 api-version: '1.21'
 authors: [ Foxils @foxils. on Discord ]
 description: Does some stuff idfk yet.
+
+depend:
+  - foxutils-items
+  - foxutils-hud
