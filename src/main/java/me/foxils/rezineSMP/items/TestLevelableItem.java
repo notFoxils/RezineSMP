@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.List;
 
-public class TestLevelableItem extends ArtifactItem implements ClickActions {
+public class TestLevelableItem extends RelementItem implements ClickActions {
 
     public TestLevelableItem(Material material, int customModelData, String name, Plugin plugin, List<ItemAbility> abilityList, List<ItemStack> itemsForRecipe, boolean shapedRecipe) {
         super(material, customModelData, name, plugin, abilityList, itemsForRecipe, shapedRecipe, 1, 4);
@@ -17,11 +17,12 @@ public class TestLevelableItem extends ArtifactItem implements ClickActions {
 
     @Override
     public void rightClickAir(PlayerInteractEvent event, ItemStack itemInteracted) {
-        setItemStackLevel(itemInteracted, getItemStackLevel(itemInteracted) - 1);
+        if (getItemStackLevel(itemInteracted) < 1) return;
+        event.getPlayer().sendMessage("e");
     }
 
     @Override
     public void shiftRightClickAir(PlayerInteractEvent event, ItemStack itemInteracted) {
-        setItemStackLevel(itemInteracted, getItemStackLevel(itemInteracted) + 1);
+        rightClickAir(event, itemInteracted);
     }
 }
