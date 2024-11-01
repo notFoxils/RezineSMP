@@ -68,15 +68,9 @@ public abstract class RelementItem extends Item {
     }
 
     public static int getItemStackLevel(ItemStack artifactItemStack) {
-        if (!(ItemRegistry.getItemFromItemStack(artifactItemStack) instanceof RelementItem relementItem)) {
-            System.out.println("e");
-            return 0;
-        }
+        if (!(ItemRegistry.getItemFromItemStack(artifactItemStack) instanceof RelementItem relementItem)) return 0;
 
-        if (!getAbilitiesEnabled(artifactItemStack)) {
-            System.out.println("2");
-            return relementItem.getMinimumLevel() - 1;
-        }
+        if (!getAbilitiesEnabled(artifactItemStack)) return relementItem.getMinimumLevel() - 1;
 
         return ItemUtils.getIntegerDataFromWeaponKey(relementItem.ARTIFACT_ITEM_LEVEL_KEY, artifactItemStack);
     }

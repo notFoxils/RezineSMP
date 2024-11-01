@@ -34,8 +34,6 @@ public class RezinedDragonRelement extends RelementItem implements ClickActions,
     private final NamespacedKey DRAGON_FIREBALL_RESTOCK_COOLDOWN_KEY;
     private final NamespacedKey DRAGON_FIREBALLS_AMOUNT_KEY;
     private final NamespacedKey DRAGON_FIREBALL_SHOOT_ABILITY_COOLDOWN_KEY;
-    @SuppressWarnings("all")
-    private final NamespacedKey DRAGONS_CALL_COOLDOWN_KEY;
 
     private static final BaseComponent DRAGON_LIFT_USAGE_MESSAGE =
             new ComponentBuilder()
@@ -91,7 +89,6 @@ public class RezinedDragonRelement extends RelementItem implements ClickActions,
         this.DRAGON_FIREBALL_RESTOCK_COOLDOWN_KEY = new NamespacedKey(plugin, "dragon_fireball_restock_cooldown");
         this.DRAGON_FIREBALLS_AMOUNT_KEY= new NamespacedKey(plugin, "dragon_fireballs_amount");
         this.DRAGON_FIREBALL_SHOOT_ABILITY_COOLDOWN_KEY = new NamespacedKey(plugin, "dragon_fireball_shoot_ability_cooldown");
-        this.DRAGONS_CALL_COOLDOWN_KEY = new NamespacedKey(plugin, "dragon_call_cooldown");
     }
 
     private void liftPlayersWithinFiveBlockRadius(PlayerInteractEvent event, ItemStack itemInteracted) {

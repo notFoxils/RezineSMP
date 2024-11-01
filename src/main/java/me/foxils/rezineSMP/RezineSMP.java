@@ -5,6 +5,7 @@ import me.foxils.foxutils.utilities.ActionType;
 import me.foxils.foxutils.utilities.ItemAbility;
 import me.foxils.rezineSMP.commands.GetItemLevel;
 import me.foxils.rezineSMP.commands.SetItemLevel;
+import me.foxils.rezineSMP.items.DragonBlade;
 import me.foxils.rezineSMP.items.RezinedDragonRelement;
 import me.foxils.rezineSMP.items.FireGlaxRelement;
 import me.foxils.rezineSMP.items.TestLevelableItem;
@@ -77,6 +78,11 @@ public final class RezineSMP extends JavaPlugin {
                         new ItemStack(Material.NETHERITE_INGOT), new ItemStack(Material.DRAGON_EGG), new ItemStack(Material.NETHERITE_INGOT),
                         new ItemStack(Material.TOTEM_OF_UNDYING), new ItemStack(Material.BREEZE_ROD), new ItemStack(Material.TOTEM_OF_UNDYING)
                 ), true));
+        ItemRegistry.registerItem(new DragonBlade(Material.NETHERITE_SWORD, 1, "e", this,
+                List.of(
+                        new ItemAbility("e", List.of("#e"), ActionType.RIGHT_CLICK),
+                        new ItemAbility("e", List.of("#e"), ActionType.SHIFT_RIGHT_CLICK)
+                )));
     }
 
     @SuppressWarnings("all")

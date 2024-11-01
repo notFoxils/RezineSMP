@@ -11,7 +11,6 @@ import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -57,14 +56,14 @@ public class FireGlaxRelement extends RelementItem implements TakeDamageAction, 
 
         if (ItemUtils.getCooldown(GLAX_FIRE_BALL_ABILITY_COOLDOWN_KEY, itemStack, 1, player, DRAGON_FIREBALL_SHOOT_ABILITY_USAGE_MESSAGE)) return;
 
-        final GlaxFireball glaxFireball = new GlaxFireball(player);
+        final Location playerEyeLocation = player.getEyeLocation();
 
-        final Fireball fireball = (Fireball) glaxFireball.getBukkitEntity();
+        final World playerWorld = player.getWorld();
 
-        fireball.setVelocity(player.getEyeLocation().getDirection());
+        final GlaxFireball glaxFireball = new GlaxFireball(playerEyeLocation, playerEyeLocation.getDirection(), playerWorld, player);
 
         player.playSound(player, Sound.ITEM_FIRECHARGE_USE, 1F, 1F);
-        Bukkit.getScheduler().runTaskLater(plugin, () -> player.playSound(player, Sound.ENTITY_ENDER_DRAGON_GROWL, 0.5F, 0.5F), 6L);
+        Bukkit.getScheduler().runTaskLater(plugin, () -> playerWorld.playSound(playerEyeLocation, Sound.ENTITY_ENDER_DRAGON_GROWL, 0.5F, 0.5F), 6L);
     }
 
     @Override
@@ -88,7 +87,7 @@ public class FireGlaxRelement extends RelementItem implements TakeDamageAction, 
     private void preventFireDamage(EntityDamageEvent entityDamageEvent) {
         final EntityDamageEvent.DamageCause damageCause = entityDamageEvent.getCause();
 
-        if (!FIRE_RELATED_DAMAGE_CAUSES.contains(damageCause) || damageCause != EntityDamageEvent.DamageCause.FIRE) return;
+        if (!FIRE_RELATED_DAMAGE_CAUSES.contains(damageCause) && damageCause != EntityDamageEvent.DamageCause.FIRE) return;
 
         entityDamageEvent.setCancelled(true);
     }

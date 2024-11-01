@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 public final class EntityAttributes {
 
-    private static Plugin plugin = null;
+    private static Plugin plugin;
 
     private EntityAttributes() {}
 
